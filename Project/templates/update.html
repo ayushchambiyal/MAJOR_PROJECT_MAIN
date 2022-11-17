@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <!-- Head Section content -->
+  <head>
+    <title>Bid || Onl-Auc-Sys</title>
+  </head>
+  <style>
+    .hello{
+        text-align:center;
+        margin-top:200px;
+        box-shadow: 2px 2px 20px blue;
+        margin-left:350px;
+        margin-right:350px;
+    }
+  </style>
+  <body>
+    <div class="hello">
+    <form
+      action="updaterecord/{{ mymember.id }}"
+      name="myform"
+      method="POST"
+      onsubmit="return functionx()"
+    >
+      {% csrf_token %}
+      <label for="bid">ENTER BID</label><br />
+      <input type="text" id="bid_amt" name="bid_amt" /><br />
+      <br>
+      <label for="bidder">CONFIRM BIDDER NAME</label><br />
+      <input type="text" id="bidder" name="bidder" /><br />
+      <input type="submit" value="submit" name="sk"></input>
+      <br>
+      <br>
+      <br>
+      <label for="bid">Don't Want To Bid ?</label><br />
+      <a href="http://127.0.0.1:8000/buyer_interface">GO BACK</a>
+    </form>
+</div>
+    <script>
+      function functionx() {
+        let x = document.forms["myform"]["bid_amt"].value;
+        if (x <= "{{mymember.price}}" - 0) {
+          alert("Lower Bid Error Enter Higher Value than previous");
+          return false;
+        }
+        let bd="{{mymember.dtime.day}}";
+        let bm="{{mymember.dtime.month}}";
+        let by="{{mymember.dtime.year}}";
+        var date = new Date();
+        var day=date.getDate();
+        var month=date.getMonth()+1;
+        var year=date.getFullYear();
+        
+        if(by>year)
+        {
+          return true;
+        }
+        else if(bm>month)
+        {
+          return true;
+        }
+        else if(bd>=day)
+        {
+          return true;
+        }
+        else{
+          alert("Bidd Is Closed For That Item || SORRY");
+          return false;
+        }
+      }
+    </script>
+  </body>
+</html>

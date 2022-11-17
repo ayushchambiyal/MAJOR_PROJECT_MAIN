@@ -1,0 +1,167 @@
+{% comment %} {% extends 'base.html' %} {% endcomment %}
+{% block body %}
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>First Web Page</title>
+  </head>
+  <style>
+    .seller_head {
+      position: relative;
+      text-align: center;
+      color: white;
+      font-size: 40px;
+      text-decoration: underline;
+    }
+    .card-header{
+      position: relative;
+      text-align: center;
+      color: white;
+      font-size: 20px;
+    }
+    .card-body{
+      margin-left:350px;
+      box-shadow: 2px 2px 20px yellow;
+      display: inline-block;
+      width:600px;
+      height:400px;
+      margin-bottom:20px;
+      background-color:green;
+    }
+    .mb-3{
+       margin-left:100px;
+       margin-top:14px;
+       margin-right:100px;
+    }
+    .form-label{
+      color:white;
+      
+    }
+    .mb-3 .form-control{
+      height:20px;
+      width:100%;
+    }
+    .suneet{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      margin-top:30px;
+    }
+    .suneet .savebtn{
+      width:100px;
+      hright:20px;
+    }
+    .downloadButton {
+        color: black;
+        width: 115px;
+        height: 25px;
+        background: yellow;
+        padding: 10px;
+        border-radius: 5px;
+        color: black;
+        font-weight: bold;
+        line-height: 20px;
+      }
+  </style>
+  <body bgcolor="light-orange">
+    {% comment %} {% for msg in messages %}
+    <div class="alert">
+      <span class="closebtn" onclick="this.parentElement.style.display='none';"
+        >&times;</span
+      >
+      <center><strong>Congratulation's</strong>{{msg}}</cemter>
+      <center><a href="/seller" class="yellow">RETURN BACK TO SELLER PAGE</a></center>
+    </div>
+    {% endfor %} {% endcomment %}
+      <h5 class="seller_head">Add Item To Sell</h5>
+    <div>
+      <section class="section">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card-body">
+                  <form action="" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                      <label for="" class="form-label">Product Name</label>
+                      <input
+                        type="text"
+                        required
+                        name="name"
+                        class="form-control"
+                      />
+                    </div>
+                    <div class="mb-3">
+                      <label for="" class="form-label">Descritpion</label>
+                      <input
+                        type="text"
+                        required
+                        name="description"
+                        class="form-control"
+                      />
+                    </div>
+                    <div class="mb-3">
+                      <label for="" class="form-label">Seller Name</label>
+                      <input
+                        type="text"
+                        required
+                        name="seller_name"
+                        class="form-control"
+                      />
+                    <div class="mb-3">
+                      <label for="" class="form-label">Current Bid</label>
+                      <input
+                        type="text"
+                        required
+                        name="price"
+                        class="form-control"
+                      />
+                    </div>
+                    <div class="mb-3">
+                      <label for="" class="form-label">Image</label>
+                      <input
+                        type="file"
+                        required
+                        name="image"
+                        class="form-control"
+                      />
+                    </div>
+                    <div class="mb-3">
+                      <label for="" class="form-label">Set Timer</label>
+                      <input
+                        type="datetime-local"
+                        required
+                        name="datetime"
+                        class="form-control"
+                      />
+                    </div>
+                    <div class="suneet">
+                    {% comment %} <button type="submit" class="savebtn">Save</button> {% endcomment %}
+                    <form action="" method="post">
+                         <button name="save" value="upvote">Save</button>
+                    </form>
+                    
+                    </div>
+                  </form>
+                  
+                </div>
+              </div>
+              
+            </div>
+            
+          </div>
+          <br>
+          <center><a href="/home" class="downloadButton">GO BACK</a></center>
+        </div>
+      </section>
+    </div>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script>
+      {% for msg in messages %}
+       swal("{{msg}}");
+      {% endfor %}
+    </script>
+  </body>
+</html>
+{% endblock body %}

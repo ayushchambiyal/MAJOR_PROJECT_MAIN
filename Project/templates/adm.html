@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+  <!-- Head Section content -->
+  <head>
+    <!-- Page title -->
+    <title>Onl-Auc-Sys</title>
+    <style>
+      body{
+        margin:0;
+        font-family:sans-serif;
+      }
+      .section{
+        background-color:#252121;
+        display:flex;
+        justify-content:space-between;
+        padding:40px;
+        width:60%;
+        margin:5rem auto 0 auto;
+      }
+      .section img{
+         width: 300px;
+         height: 200px;
+      border-top-right-radius: 5px;
+      border-top-left-radius: 5px;
+      }
+      .section h3{
+        margin:0;
+        color:greenyellow;
+      }
+      .section h4{
+      color: red;
+      text-align: center;
+      animation-name: blink_text;
+      animation-duration: 1s;
+      animation-iteration-count: infinite;
+      }
+      .section p{
+        color:white;
+      }
+      .fronthead {
+        position: relative;
+        text-align: center;
+        color: white;
+        font-size: 35px;
+        margin-top: 70px;
+      }
+      .downloadButton {
+        color: black;
+        width: 115px;
+        height: 25px;
+        background: yellow;
+        padding: 10px;
+        border-radius: 5px;
+        color: black;
+        font-weight: bold;
+        line-height: 20px;
+      }
+    
+    </style>
+  </head>
+
+  <!-- Body Section content -->
+  <body bgcolor="light-orange">
+    <h3 class="fronthead">....TRACK YOUR BID FROM HERE....</h3>
+    <center><a href="/home" class="downloadButton">GO BACK</a></center>
+    {% for item in Show %}
+    <div class="section">
+      <div class="text">
+        <h3>Product Name: {{item.name}}</h3>
+        <h3>Current Bidder: {{item.current_bidder_name}}
+        <h3>Current Amount: {{item.price}}</h3>
+        <br>
+        <br>
+        <br>
+        <br>
+        <h4>Last Time To Bid: {{item.dtime}}</h4> 
+      </div>
+      <img
+        src="{{item.image.url}}"
+        alt="Card image cap"
+      />
+    
+    </div>
+    {%endfor%}
+  </body>
+</html>

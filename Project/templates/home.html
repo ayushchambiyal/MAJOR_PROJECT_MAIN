@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html>
+  <!-- Head Section content -->
+  <head>
+    <!-- Page title -->
+    <title>Home || Onl-Auc-Sys</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+  </head>
+  <style>
+                        .topnav {
+                          background-color: #392a48;
+                          overflow: hidden;
+                        }
+
+                        /* Style the links inside the navigation bar */
+                        .topnav a {
+                          float: left;
+                          color: #f2f2f2;
+                          text-align: center;
+                          padding: 20px 45px;
+                          text-decoration: none;
+                          font-size: 25px;
+                        }
+
+                        /* Change the color of links on hover */
+                        .topnav a:hover {
+                          background-color: #ddd;
+                          color: black;
+                        }
+
+                        /* Add a color to the active/current link */
+                        .topnav a.active {
+                          background-color: black;
+                          color: white;
+                        }
+                        .topnav-right {
+                          float: right;
+                        }
+                        .fronthead {
+                          position: relative;
+                          text-align: center;
+                          color: white;
+                          font-size: 50px;
+
+                        }
+                        .front {
+                         color: white;
+                         text-align:center;
+                         font-size:30px;
+                        }
+                        .fronthea{
+                          position: relative;
+                          text-align: center;
+                          color: white;
+                          font-size: 50px;
+                          text-decoration:underline;
+                        }
+                        .clock {
+                          width: 20rem;
+                          height: 20rem;
+                          position: relative;
+                          padding: 2rem;
+                          border: 7px solid #282828;
+                          box-shadow: -4px -4px 10px rgba(252, 252, 252, 2.5),
+                            inset 4px 4px 10px rgba(0, 0, 0, 0.5),
+                            inset -4px -4px 10px rgba(67, 67, 67, 0.5),
+                            4px 4px 10px rgba(0, 0, 0, 0.3);
+                          border-radius: 50%;
+                          margin: 50px auto;
+                        }
+                        .outer-clock-face {
+                          position: relative;
+                          background: #282828;
+                          overflow: hidden;
+                          width: 100%;
+                          height: 100%;
+                          border-radius: 100%;
+                        }
+
+                        .outer-clock-face::after {
+                          -webkit-transform: rotate(90deg);
+                          -moz-transform: rotate(90deg);
+                          transform: rotate(90deg);
+                        }
+
+                        .outer-clock-face::after,
+                        .outer-clock-face::before,
+                        .outer-clock-face .marking {
+                          content: "";
+                          position: absolute;
+                          width: 5px;
+                          height: 100%;
+                          background: #1df52f;
+                          z-index: 0;
+                          left: 49%;
+                        }
+                        .outer-clock-face .marking {
+                          background: #bdbdcb;
+                          width: 3px;
+                        }
+
+                        .outer-clock-face .marking.marking-one {
+                          -webkit-transform: rotate(30deg);
+                          -moz-transform: rotate(30deg);
+                          transform: rotate(30deg);
+                        }
+
+                        .outer-clock-face .marking.marking-two {
+                          -webkit-transform: rotate(60deg);
+                          -moz-transform: rotate(60deg);
+                          transform: rotate(60deg);
+                        }
+
+                        .outer-clock-face .marking.marking-three {
+                          -webkit-transform: rotate(120deg);
+                          -moz-transform: rotate(120deg);
+                          transform: rotate(120deg);
+                        }
+
+                        .outer-clock-face .marking.marking-four {
+                          -webkit-transform: rotate(150deg);
+                          -moz-transform: rotate(150deg);
+                          transform: rotate(150deg);
+                        }
+                        .inner-clock-face {
+                          position: absolute;
+                          top: 10%;
+                          left: 10%;
+                          width: 80%;
+                          height: 80%;
+                          background: #282828;
+                          -webkit-border-radius: 100%;
+                          -moz-border-radius: 100%;
+                          border-radius: 100%;
+                          z-index: 1;
+                        }
+
+                        .inner-clock-face::before {
+                          content: "";
+                          position: absolute;
+                          top: 50%;
+                          left: 50%;
+                          width: 16px;
+                          height: 16px;
+                          border-radius: 18px;
+                          margin-left: -9px;
+                          margin-top: -6px;
+                          background: #4d4b63;
+                          z-index: 11;
+                        }
+                        .hand {
+                          width: 50%;
+                          right: 50%;
+                          height: 6px;
+                          background: #61afff;
+                          position: absolute;
+                          top: 50%;
+                          border-radius: 6px;
+                          transform-origin: 100%;
+                          transform: rotate(90deg);
+                          transition-timing-function: cubic-bezier(0.1, 2.7, 0.58, 1);
+                        }
+
+                        .hand.hour-hand {
+                          width: 30%;
+                          z-index: 3;
+                        }
+
+                        .hand.min-hand {
+                          height: 3px;
+                          z-index: 10;
+                          width: 40%;
+                        }
+
+                        .hand.second-hand {
+                          background: #ee791a;
+                          width: 45%;
+                          height: 2px;
+                        }
+
+                        {% comment %} SECTION WALE {% endcomment %}
+                        section {
+                      height: 100vh;
+                      width: 100%;
+                      display: grid;
+                      place-items: center;
+                    }
+                    .row {
+                      display: flex;
+                      flex-wrap: wrap;
+                    }
+                    .column {
+                      width: 100%;
+                      padding: 0 1em 1em 1em;
+                      text-align: center;
+                    }
+                    .card {
+                      width: 100%;
+                      height: 100%;
+                      padding: 2em 1.5em;
+                      background: linear-gradient(#ffffff 50%, #2c7bfe 50%);
+                      background-size: 100% 200%;
+                      background-position: 0 2.5%;
+                      border-radius: 5px;
+                      box-shadow: 0 0 35px rgba(0, 0, 0, 0.12);
+                      cursor: pointer;
+                      transition: 0.5s;
+                    }
+                    h3 {
+                      font-size: 20px;
+                      font-weight: 600;
+                      color: #1f194c;
+                      margin: 1em 0;
+                    }
+                    p {
+                      color: #575a7b;
+                      font-size: 15px;
+                      line-height: 1.6;
+                      letter-spacing: 0.03em;
+                    }
+                    .icon-wrapper {
+                      background-color: #2c7bfe;
+                      position: relative;
+                      margin: auto;
+                      font-size: 30px;
+                      height: 2.5em;
+                      width: 2.5em;
+                      color: #ffffff;
+                      border-radius: 50%;
+                      display: grid;
+                      place-items: center;
+                      transition: 0.5s;
+                    }
+                    .card:hover {
+                      background-position: 0 100%;
+                    }
+                    .card:hover .icon-wrapper {
+                      background-color: #ffffff;
+                      color: #2c7bfe;
+                    }
+                    .card:hover h3 {
+                      color: #ffffff;
+                    }
+                    .card:hover p {
+                      color: #f0f0f0;
+                    }
+                    @media screen and (min-width: 768px) {
+                      section {
+                        padding: 0 2em;
+                      }
+                      .column {
+                        flex: 0 50%;
+                        max-width: 50%;
+                      }
+                    }
+                    @media screen and (min-width: 992px) {
+                      section {
+                        padding: 1em 3em;
+                      }
+                      .column {
+                        flex: 0 0 33.33%;
+                        max-width: 33.33%;
+                      }
+                    }
+                    * {
+                  box-sizing: border-box;
+
+                }
+                .main{
+          margin: 50px;
+         display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: 1fr 1fr;
+        }
+
+        @media (max-width:660px){
+      .main{
+        gap:10px;
+        margin: 0;
+
+      }
+
+      .icons{
+        display: flex;
+      }
+
+
+      .row{
+        grid-column: 1/4;
+      }
+    }
+
+
+
+
+
+
+
+    .manik{
+      width: 120px;
+    }
+    .main{
+      margin: 50px;
+      padding-top: 20px;
+      padding-bottom: 50px;
+      display: grid;
+      gap: 50px;
+      grid-template-columns: repeat(4, 1fr );
+    }
+    .row{
+     margin-top: 50px;
+    }
+  </style>
+  <body bgcolor="light-orange">
+    <div class="topnav">
+      <a href="/">Home</a>
+      <a href="/about">About Us</a>
+      <a href="/seller">Seller</a>
+      <a href="/buyer">Buyer</a>
+      <a href="/contact">Contact Us</a>
+      <div class="topnav-right">
+        <a class="active" href="/adm">Track Bid</a>
+      </div>
+    </div>
+    <br />
+    <h3 class="fronthead">ONLINE AUCTION SYSTEM</h3>
+    <div class="clock">
+      <div class="outer-clock-face">
+        <div class="marking marking-one"></div>
+        <div class="marking marking-two"></div>
+        <div class="marking marking-three"></div>
+        <div class="marking marking-four"></div>
+      </div>
+      <div class="inner-clock-face">
+        <div class="hand hour-hand"></div>
+        <div class="hand min-hand"></div>
+        <div class="hand second-hand"></div>
+      </div>
+    </div>
+    <h3 class="front">
+      Special Note: This Website is available 24*7 for our clients
+    </h3>
+    <section>
+      <br />
+      <br />
+      <br />
+      <div class="row">
+        <h2 class="fronthea">Our Services</h2>
+      </div>
+      <div class="row">
+        <div class="column">
+          <div class="card">
+            <div class="icon-wrapper">
+              <i class="fas fa-hammer"></i>
+            </div>
+            <h3>Instant Bid Service</h3>
+            <p>
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quisquam
+              consequatur necessitatibus eaque.
+            </p>
+          </div>
+        </div>
+        <div class="column">
+          <div class="card">
+            <div class="icon-wrapper">
+              <i class="fas fa-brush"></i>
+            </div>
+            <h3>Smooth Interface</h3>
+            <p>
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quisquam
+              consequatur necessitatibus eaque.
+            </p>
+          </div>
+        </div>
+        <div class="column">
+          <div class="card">
+            <div class="icon-wrapper">
+              <i class="fas fa-wrench"></i>
+            </div>
+            <h3>User's Friendly</h3>
+            <p>
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quisquam
+              consequatur necessitatibus eaque.
+            </p>
+          </div>
+        </div>
+        <div class="column">
+          <div class="card">
+            <div class="icon-wrapper">
+              <i class="fas fa-truck-pickup"></i>
+            </div>
+            <h3>Sell In Minutes</h3>
+            <p>
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quisquam
+              consequatur necessitatibus eaque.
+            </p>
+          </div>
+        </div>
+        <div class="column">
+          <div class="card">
+            <div class="icon-wrapper">
+              <i class="fas fa-broom"></i>
+            </div>
+            <h3>Support Team || 24*7</h3>
+            <p>
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quisquam
+              consequatur necessitatibus eaque.
+            </p>
+          </div>
+        </div>
+        <div class="column">
+          <div class="card">
+            <div class="icon-wrapper">
+              <i class="fas fa-plug"></i>
+            </div>
+            <h3>Cheap Rates || High Rated Products</h3>
+            <p>
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quisquam
+              consequatur necessitatibus eaque.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      const secondHand = document.querySelector(".second-hand");
+      const minsHand = document.querySelector(".min-hand");
+      const hourHand = document.querySelector(".hour-hand");
+
+      function setDate() {
+        const now = new Date();
+
+        const seconds = now.getSeconds();
+        const secondsDegrees = (seconds / 60) * 360 + 90;
+        secondHand.style.transform = `rotate(${secondsDegrees}deg)`;
+
+        const mins = now.getMinutes();
+        const minsDegrees = (mins / 60) * 360 + (seconds / 60) * 6 + 90;
+        minsHand.style.transform = `rotate(${minsDegrees}deg)`;
+
+        const hour = now.getHours();
+        const hourDegrees = (hour / 12) * 360 + (mins / 60) * 30 + 90;
+        hourHand.style.transform = `rotate(${hourDegrees}deg)`;
+      }
+
+      setInterval(setDate, 1000);
+
+      setDate();
+    </script>
+  </body>
+</html>

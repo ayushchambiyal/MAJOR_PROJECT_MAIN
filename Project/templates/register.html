@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Sign Up | By Code Info</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <style>
+    body {
+      background-color: #344a72;
+      font-family: "Roboto", sans-serif;
+    }
+    .downloadButton {
+      color: black;
+      width: 115px;
+      height: 25px;
+      background: yellow;
+      padding: 10px;
+      text-align: center;
+      border-radius: 5px;
+      color: black;
+      font-weight: bold;
+      line-height: 20px;
+    }
+    .signup-box {
+      width: 360px;
+      height: 620px;
+      margin: auto;
+      background-color: white;
+      border-radius: 3px;
+    }
+
+    .login-box {
+      width: 360px;
+      height: 280px;
+      margin: auto;
+      border-radius: 3px;
+      background-color: white;
+    }
+
+    h1 {
+      text-align: center;
+      padding-top: 15px;
+    }
+
+    h4 {
+      text-align: center;
+    }
+
+    form {
+      width: 300px;
+      margin-left: 20px;
+    }
+
+    form label {
+      display: flex;
+      margin-top: 20px;
+      font-size: 18px;
+    }
+
+    form input {
+      width: 100%;
+      padding: 7px;
+      border: none;
+      border: 1px solid gray;
+      border-radius: 6px;
+      outline: none;
+    }
+    input[type="button"] {
+      width: 320px;
+      height: 35px;
+      margin-top: 20px;
+      border: none;
+      background-color: #49c1a2;
+      color: white;
+      font-size: 18px;
+    }
+    p {
+      text-align: center;
+      padding-top: 20px;
+      font-size: 15px;
+    }
+    .para-2 {
+      text-align: center;
+      color: white;
+      font-size: 15px;
+      margin-top: -10px;
+    }
+    .para-2 a {
+      color: #49c1a2;
+    }
+    .alert {
+      padding: 1px;
+      background-color: #f44336; /* Red */
+      color: white;
+      margin-bottom: 15px;
+    }
+
+    /* The close button */
+    .closebtn {
+      margin-left: 15px;
+      color: white;
+      font-weight: bold;
+      float: right;
+      font-size: 22px;
+      line-height: 20px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    /* When moving the mouse over the close button */
+    .closebtn:hover {
+      color: black;
+    }
+    .yellow{
+      color:yellow;
+    }
+    .btn btn-primary{
+      text-align:center;
+    }
+  </style>
+  <body>
+    {% for msg in messages %}
+    <div class="alert">
+      <span class="closebtn" onclick="this.parentElement.style.display='none';"
+        >&times;</span
+      >
+      <center><strong>Congratulation's for the Successful Registration</strong>{{msg}}</cemter>
+      <center><a href="/seller" class="yellow">RETURN BACK TO SELLER PAGE</a></center>
+    </div>
+    {% endfor %}
+    <div class="signup-box">
+      <h1>Sign Up</h1>
+      <h4>It's free and only takes a minute</h4>
+      <form method="post" action="/register">
+        {% csrf_token %}
+        <label for="first_name">First Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="first_name"
+          name="first_name"
+          placeholder=""
+        />
+        <label for="last_name">Last Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="last_name"
+          name="last_name"
+          placeholder=""
+        />
+        <label for="email">Email</label>
+        <input
+          type="email"
+          class="form-control"
+          id="email"
+          name="email"
+          placeholder=""
+        />
+        <label for="password1">Password</label>
+        <input
+          type="password"
+          class="form-control"
+          id="password1"
+          name="password1"
+          placeholder=""
+        />
+        <label for="password2">Another Password</label>
+        <input
+          type="password"
+          class="form-control"
+          id="password2"
+          name="password2"
+          placeholder=""
+        />
+        <button class="btn btn-primary" type="submit">Submit</button>
+      </form>
+      <p>
+        By clicking the Sign Up button,you agree to our <br />
+        <a href="/contact">Terms and Condition</a> and
+        <a href="/contact">Policy Privacy</a>
+      </p>
+    </div>
+  </body>
+</html>
